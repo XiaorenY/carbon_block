@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "./Settings.sol";
-import "./Interfaces/IWETH.sol";
+import "../interfaces/IWETH.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin-upgradeable/contracts/token/ERC20/ERC20Upgradeable.sol";
 import "@openzeppelin-upgradeable/contracts/token/ERC721/utils/ERC721HolderUpgradeable.sol";
