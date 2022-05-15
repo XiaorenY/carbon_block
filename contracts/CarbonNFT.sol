@@ -8,14 +8,14 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract CarbonNFT is ERC721, Ownable, ERC721Burnable {
     uint256 public tokenCounter;
 
-    mapping (uint256 => uint256) public tokenIdToExpectedCarbonCredit;
+    mapping(uint256 => uint256) public tokenIdToExpectedCarbonCredit;
     // for each token id, burn at expire time
     mapping(uint256 => uint) public tokenIdToExpireTime;
     mapping(uint256 => uint256) public tokenIdToFractionalToken;
 
     constructor () public ERC721 ("CarbonNFT", "Carbon") {}
 
-    function createCollectible(uint256 expectedCarbondCredit, uint period, uint256 fractionalTokenNumber, string memory tokenURI) public returns (uint256) {
+    function createCollectible(uint256 expectedCarbondCredit, uint period, uint256 fractionalTokenNumber) public returns (uint256) {
         uint256 newItemId = tokenCounter;
         _safeMint(msg.sender, newItemId);
         //_setTokenURI(newItemId, tokenURI);
@@ -24,5 +24,10 @@ contract CarbonNFT is ERC721, Ownable, ERC721Burnable {
         tokenIdToFractionalToken[newItemId] = fractionalTokenNumber;
         tokenCounter = tokenCounter + 1;
         return newItemId;
+    }
+
+    // Override _baseURI
+    function _baseURI() internal pure override returns (string memory) {
+        return "ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/";
     }
 }
