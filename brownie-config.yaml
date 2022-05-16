@@ -8,3 +8,13 @@ compiler:
       - '@chainlink=smartcontractkit/chainlink-brownie-contracts@1.1.1'
       - '@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.5.0'
       - '@openzeppelin-upgradeable=OpenZeppelin/openzeppelin-contracts-upgradeable@4.5.0'
+# automatically fetch contract sources from Etherscan
+autofetch_sources: True
+dotenv: .env
+# set a custom mnemonic for the development network
+networks:
+  default: development
+wallets:
+  from_key: ${PRIVATE_KEY}
+  from_mnemonic: ${MNEMONIC}
+  # You'd have to change the accounts.add to accounts.from_mnemonic to use from_mnemonic
